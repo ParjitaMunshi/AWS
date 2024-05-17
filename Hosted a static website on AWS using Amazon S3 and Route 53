@@ -1,0 +1,49 @@
+##My Personal Website
+This repository contains the files for my personal website, which is hosted using Amazon S3. Below are the steps I followed to design, set up, and host my website.
+
+##Step 1: Design Your Website
+I designed my website using a template from Free CSS. Alternatively, you can design your own website.
+
+##Step 2: Set Up Amazon S3 Bucket
+To host my website on Amazon S3, I followed these steps:
+
+#1. Create an S3 Bucket
+Go to the AWS Management Console and open the Amazon S3 console.
+Click "Create bucket".
+Enter a unique name for your bucket.
+In the "Properties" section, enable "Static website hosting".
+
+#2. Upload Website Files
+Upload your website files to the bucket.
+Click on your bucket name.
+Click the "Upload" button.
+Drag and drop your website files or select them manually.
+
+#3. Configure Bucket Permissions
+Set the bucket permissions to allow public access.
+Go to the "Permissions" tab.
+Click "Bucket policy" and add a policy to allow public read access. Here is an example policy:
+json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::parjitamunshi/*"
+            ]
+        }
+    ]
+} 
+
+##4. Enable Static Website Hosting
+In the "Properties" tab, enable "Static website hosting".
+Specify the index document (e.g., index.html).
+
+##5. Access Your Website
+Website is now accessible at the endpoint provided in the S3 bucket's static website hosting settings.
